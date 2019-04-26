@@ -4,8 +4,9 @@
 var createSlideshow = function () {
     "use strict";
     // PRIVATE VARIABLES AND FUNCTIONS
-    var timer, play = true, nodes, img, stopSlideShow, displayNextImage, setPlayText;
+    var timer, play = true, nodes, img, stopSlideShow, displayNextImage, setPlayText, newSpeed;
     
+    newSpeed = 2000;
     nodes = { image: null, caption: null };
     img = { cache: [], counter: 0 };
     
@@ -46,7 +47,7 @@ var createSlideshow = function () {
                 nodes.image = arguments[0];
                 nodes.caption = arguments[1];
             }
-            timer = setInterval(displayNextImage, 2000);
+            timer = setInterval(displayNextImage, newSpeed);
             return this;
         },
         createToggleHandler: function () {
@@ -90,3 +91,9 @@ window.addEventListener("load", function () {
     // PAUSE THE SLIDESHOW
     $("play_pause").onclick = slideshow.createToggleHandler();
 });
+
+function speedUp() {
+    "use strict";
+    var changeSpeed = window.prompt("The current speed is 2000. Change the speed:")
+    var newSpeed = changeSpeed;
+}
